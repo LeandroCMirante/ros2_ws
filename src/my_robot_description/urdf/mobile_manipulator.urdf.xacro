@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<robot name="mobile_manipulator" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- <xacro:include filename="mobile_base.xacro" /> -->
+  <xacro:include filename="cr3_robot.urdf" />
+
+  <link name="base_footprint"/>
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.5"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="blue"/>
+    </visual>
+  </link>
+
+  <link name="garra_link" >
+    <visual>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <origin xyz="0 0 -0.05" rpy="0 0 0"/>
+      <material name="red"/>
+    </visual>
+  </link>
+
+  <link name="lidar_link" >
+    <visual>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <origin xyz="0 0 -0.05" rpy="0 0 0"/>
+      <material name="blue"/>
+    </visual>
+  </link>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0.25" rpy="0 0 0"/>
+  </joint>
+
+  <joint name="base_to_arm_joint" type="fixed">
+    <parent link="base_link" />      
+    <child link="dummy_link" />      
+    <origin xyz="0 0 0.25" rpy="0 0 0" />
+  </joint>
+
+  <joint name="link6_to_garra_joint" type="fixed">
+    <parent link="Link6" />      
+    <child link="garra_link" />      
+    <origin xyz="0 0 0.1" rpy="0 0 0" />
+  </joint>
+
+  <joint name="garra_to_lidar_joint" type="fixed">
+    <parent link="garra_link" />      
+    <child link="lidar_link" />      
+    <origin xyz="-0.1 0 0" rpy="0 0 0" />
+  </joint>
+
+</robot>
