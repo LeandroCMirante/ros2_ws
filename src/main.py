@@ -169,7 +169,7 @@ def main(args=None):
 
                     # Busca a relação entre a base e o lidar no instante atual
                     transform = tf_buffer.lookup_transform(
-                        'base_link',   # Referencial alvo (base do Dobot)
+                        'cr3_base_link',   # Referencial alvo (base do Dobot)
                         'lidar_link',  # Referencial de origem (sensor)
                         rclpy.time.Time()
                     )

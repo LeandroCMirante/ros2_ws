@@ -142,7 +142,7 @@ def execute_move_sequence(moves_list, controller_node, points_db, test_mode, sor
                 # Checagem Juntas (J1...J6)
                 controller_node.wait_for_arrival(target_pose, is_joint=True, tolerance=2.0)
             
-        if item == POINT_ADJUST and controller_node.enableMeasure:
+        if item == POINT_ADJUST and controller_node is not None and controller_node.enableMeasure:
             print("    >>> Chegou em POINT_ADJUST. Trigger 'start'...")
             msg = String(); msg.data = "start"
             sorter_node.msgPublisher.publish(msg)
